@@ -10,11 +10,15 @@
   <%= @student.student_id %>
 </p>
 
-<ul>
-  <% @student.sections.each do |section| %>
-  <li><%= section.number %></li>
-  <% end %>
-</ul>
+<p>
+  <strong>All Sections:</strong>
+  <ul>
+    <% @student.sections.each do |section| %>
+    <%= section.course.name %>
+    <li><%= section.number %></li>
+    <% end %>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
