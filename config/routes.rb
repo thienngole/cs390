@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
-  
-  
+  root "pages#show", page: "homepage"
+  get "/pages/:page" => "pages#show"
+
   resources :students do
     collection do
       get 'search'
