@@ -4,5 +4,8 @@ class Section < ApplicationRecord
 
   validates :number, presence: true
   validates :semester, presence: true
+  validates :room_number, presence: true
+  
+  validates_associated :course
 
 end
