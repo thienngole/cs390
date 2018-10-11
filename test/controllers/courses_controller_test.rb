@@ -45,4 +45,9 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to courses_url
   end
+
+  test "shouldn't find a missing course" do
+    assert Course.where("name like ?", "Growing").length == 0
+  end
+
 end

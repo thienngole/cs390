@@ -45,4 +45,9 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to sections_url
   end
+
+  test "shouldn't find a missing section" do
+    assert Section.where("number like ?", "55" ).length == 0
+  end
+
 end

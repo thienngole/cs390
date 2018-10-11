@@ -45,4 +45,9 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to students_url
   end
+
+  test "shouldn't find a missing student" do
+    assert Student.where("name like ?", "Phrag. besseae").length == 0
+  end
+
 end
