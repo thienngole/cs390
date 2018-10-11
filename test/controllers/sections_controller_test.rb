@@ -16,7 +16,7 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create section" do
-    assert_difference('Section.count') do
+    assert_difference('Section.count', 1) do
       post sections_url, params: { section: { course_id: @section.course_id, number: @section.number, room_number: @section.room_number, semester: @section.semester } }
     end
 
