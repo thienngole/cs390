@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class SectionsControllerTest < ActionDispatch::IntegrationTest
+
+  include Devise::Controllers::Helpers
+
+  #add this line
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @section = sections(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
