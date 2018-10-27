@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SectionsControllerTest < ActionDispatch::IntegrationTest
 
-  include Devise::Controllers::Helpers
+  #include Devise::Controllers::Helpers
 
   #add this line
   include Devise::Test::IntegrationHelpers

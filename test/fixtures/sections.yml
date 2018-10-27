@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  semester: MyString
+  semester: Fall2018
   number: 1
-  room_number: 1
+  room_number: 110
   course: one
 
 two:
-  semester: MyString
-  number: 1
-  room_number: 1
+  semester: Fall2019
+  number: 2
+  room_number: 220
   course: two

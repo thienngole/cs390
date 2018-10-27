@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StudentsControllerTest < ActionDispatch::IntegrationTest
 
-  include Devise::Controllers::Helpers
+  #include Devise::Controllers::Helpers
 
   #add this line
   include Devise::Test::IntegrationHelpers
@@ -24,7 +24,8 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create student" do
     assert_difference('Student.count') do
-      post students_url, params: { student: { name: @student.name, student_id: @student.student_id } }
+      #post students_url, params: { student: { name: @student.name, student_id: @student.student_id } }
+      post students_url, params: { student: { name: 'Heaven', student_id: '900900900' } }
     end
 
     assert_redirected_to student_url(Student.last)

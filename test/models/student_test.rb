@@ -8,9 +8,6 @@ class StudentTest < ActiveSupport::TestCase
   test "student name must not be empty" do
     student = Student.new(name: '')
     assert student.invalid?
-
-    #student = Student.new(name: 'HandSome')
-    #assert student.valid?
   end
 
   test "Studnet id must not be empty" do
@@ -22,6 +19,5 @@ class StudentTest < ActiveSupport::TestCase
     student = Student.new(student_id: '9999999999')
     assert student.invalid?
   end
-
 
 end

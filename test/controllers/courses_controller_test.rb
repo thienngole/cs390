@@ -2,8 +2,6 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
 
-  include Devise::Controllers::Helpers
-
   #add this line
   include Devise::Test::IntegrationHelpers
 
@@ -24,7 +22,8 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create course" do
     assert_difference('Course.count') do
-      post courses_url, params: { course: { credit_hours: @course.credit_hours, department: @course.department, name: @course.name, number: @course.number } }
+      #post courses_url, params: { course: { credit_hours: @course.credit_hours, department: @course.department, name: @course.name, number: @course.number } }
+      post courses_url, params: { course: { credit_hours: '4', department: 'CS', name: 'web app', number: '390' } }
     end
 
     assert_redirected_to course_url(Course.last)
