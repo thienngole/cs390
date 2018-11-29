@@ -3,13 +3,9 @@
 <h1>Sections</h1>
 
 <%= form_tag(search_sections_url, method: "get") do %>
-
    <%= label_tag(:q, "Search for:") %>
-
    <%= text_field_tag(:q) %>
-
    <%= submit_tag("Search") %>
-
  <% end %>
 
 <table>
@@ -41,5 +37,4 @@
 <br>
 
 <%= link_to 'New Section', new_section_path %>
-<%= link_to 'Go to courses', courses_path %>
-<%= link_to 'Go to students', students_path %>
+

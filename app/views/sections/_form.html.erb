@@ -33,7 +33,7 @@
   
   <div class="field">
  	 <%= f.label :student_id %><br>
-  	<%= f.collection_check_boxes(:student_ids, @students, :id, :name) %>
+  	<%= f.collection_check_boxes(:student_ids, Student.all, :id, :name) %>
   </div>
 
   <div class="actions">

@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class SectionsControllerTest < ActionDispatch::IntegrationTest
+
+  #include Devise::Controllers::Helpers
+
+  #add this line
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @section = sections(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -16,7 +23,7 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create section" do
-    assert_difference('Section.count') do
+    assert_difference('Section.count', 1) do
       post sections_url, params: { section: { course_id: @section.course_id, number: @section.number, room_number: @section.room_number, semester: @section.semester } }
     end
 
@@ -45,4 +52,9 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to sections_url
   end
+
+  test "shouldn't find a missing section" do
+    assert Section.where("number like ?", "55" ).length == 0
+  end
+
 end

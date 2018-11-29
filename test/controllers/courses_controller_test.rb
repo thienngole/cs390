@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
+
+  #add this line
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @course = courses(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -17,7 +22,8 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create course" do
     assert_difference('Course.count') do
-      post courses_url, params: { course: { credit_hours: @course.credit_hours, department: @course.department, name: @course.name, number: @course.number } }
+      #post courses_url, params: { course: { credit_hours: @course.credit_hours, department: @course.department, name: @course.name, number: @course.number } }
+      post courses_url, params: { course: { credit_hours: '4', department: 'CS', name: 'web app', number: '390' } }
     end
 
     assert_redirected_to course_url(Course.last)
@@ -45,4 +51,9 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to courses_url
   end
+
+  test "shouldn't find a missing course" do
+    assert Course.where("name like ?", "Growing").length == 0
+  end
+
 end
