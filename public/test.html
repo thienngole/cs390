@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>A very simple jQuery SPA</title>
+<title>Assignment5</title>
 <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -34,16 +34,17 @@ var fetchStudent = function(which) {
 };
 
 var fetchSection = function(which) {
-    $('#tableheader').append("<tr><td>Semester</td><td>Number</td><td>Room Number</td><td>Course ID</td></tr>")
     $("#list").empty();
+    $('#list').append("<tr><td>Semester</td><td>Number</td><td>Room Number</td><td>Course ID</td></tr>")
+    
     $.get("http://localhost:3000/" + which + ".json", true)
     .done(function(json) {
         for (item in json) {
             lis = "<tr><td>";
             lis += json[item].semester;
-            lis += json[item].number;
-            lis += json[item].room_number;
-            lis += json[item].course_id;
+            lis += "<td style='text-align: center'>" + json[item].number;
+            lis += "<td style='text-align: center'>" + json[item].room_number;
+            lis += "<td style='text-align: center'>" + json[item].course_id;
             lis += "</td><tr>";
             $("#list").append(lis);
         }
