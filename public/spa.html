@@ -10,12 +10,14 @@
 
 <button onclick="fetchStudent('students')">Students</button>
 <button onclick="fetchSection('sections')">Sections</button>
+<button onclick="fetchCourse('courses')">Courses</button>
 
 <table id='list'>
 </table>
 
 
 <script>
+
 var fetchStudent = function(which) {
     $('#list').empty();
     $('#list').append("<tr><th>Name</th><th>StudentId</th></tr>")
@@ -40,11 +42,30 @@ var fetchSection = function(which) {
     $.get("http://localhost:3000/" + which + ".json", true)
     .done(function(json) {
         for (item in json) {
-            lis = "<tr><td>";
+            lis = "<tr><td style='text-align: center'>";
             lis += json[item].semester;
             lis += "<td style='text-align: center'>" + json[item].number;
             lis += "<td style='text-align: center'>" + json[item].room_number;
             lis += "<td style='text-align: center'>" + json[item].course_id;
+            lis += "</td><tr>";
+            $("#list").append(lis);
+        }
+    })
+    .fail(function(json){ console.log("fail"); })
+};
+
+var fetchCourse = function(which) {
+    $("#list").empty();
+    $('#list').append("<tr><td>Name</td><td>Department</td><td>Number</td><td>Credit Hours</td></tr>")
+    
+    $.get("http://localhost:3000/" + which + ".json", true)
+    .done(function(json) {
+        for (item in json) {
+            lis = "<tr><td style='text-align: center'>";
+            lis += json[item].name;
+            lis += "<td style='text-align: center'>" + json[item].department;
+            lis += "<td style='text-align: center'>" + json[item].number;
+            lis += "<td style='text-align: center'>" + json[item].credit_hours;
             lis += "</td><tr>";
             $("#list").append(lis);
         }
