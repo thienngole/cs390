@@ -15,7 +15,6 @@
 <table id='list'>
 </table>
 
-
 <script>
 
 var fetchStudent = function(which) {
@@ -37,7 +36,7 @@ var fetchStudent = function(which) {
 
 var fetchSection = function(which) {
     $("#list").empty();
-    $('#list').append("<tr><td>Semester</td><td>Number</td><td>Room Number</td><td>Course ID</td></tr>")
+    $('#list').append("<tr><th>Semester</th><th>Number</th><th>Room Number</th><th>Course ID</th></tr>")
     
     $.get("http://localhost:3000/" + which + ".json", true)
     .done(function(json) {
@@ -56,7 +55,7 @@ var fetchSection = function(which) {
 
 var fetchCourse = function(which) {
     $("#list").empty();
-    $('#list').append("<tr><td>Name</td><td>Department</td><td>Number</td><td>Credit Hours</td></tr>")
+    $('#list').append("<tr><th>Name</th><th>Department</th><th>Number</th><th>Credit Hours</th></tr>")
     
     $.get("http://localhost:3000/" + which + ".json", true)
     .done(function(json) {
